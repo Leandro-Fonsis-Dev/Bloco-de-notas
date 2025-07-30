@@ -37,8 +37,11 @@
   --primary-900: hsl(207, 89%, 12%);
   
   --success-50: hsl(122, 39%, 91%);
+  --success-100: hsl(122, 39%, 82%);
+  --success-400: hsl(122, 39%, 59%);
   --success-500: hsl(122, 39%, 49%);
   --success-600: hsl(122, 39%, 44%);
+  --success-700: hsl(122, 39%, 39%);
   
   --surface-50: hsl(0, 0%, 98%);
   --surface-100: hsl(0, 0%, 96%);
@@ -113,12 +116,20 @@
 .bg-primary-900 { background-color: hsl(var(--primary-900)); }
 
 .text-success-50 { color: hsl(var(--success-50)); }
+.text-success-100 { color: hsl(var(--success-100)); }
+.text-success-400 { color: hsl(var(--success-400)); }
 .text-success-500 { color: hsl(var(--success-500)); }
 .text-success-600 { color: hsl(var(--success-600)); }
+.text-success-700 { color: hsl(var(--success-700)); }
 
 .bg-success-50 { background-color: hsl(var(--success-50)); }
+.bg-success-100 { background-color: hsl(var(--success-100)); }
+.bg-success-400 { background-color: hsl(var(--success-400)); }
 .bg-success-500 { background-color: hsl(var(--success-500)); }
 .bg-success-600 { background-color: hsl(var(--success-600)); }
+.bg-success-700 { background-color: hsl(var(--success-700)); }
+
+.hover\:bg-success-600:hover { background-color: hsl(var(--success-600)); }
 
 .bg-surface-50 { background-color: hsl(var(--surface-50)); }
 .bg-surface-100 { background-color: hsl(var(--surface-100)); }

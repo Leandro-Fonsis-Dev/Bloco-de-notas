@@ -274,7 +274,7 @@ export default function DashboardPage() {
                 <div className="flex space-x-2">
                   <Button 
                     type="submit" 
-                    className="flex-1 bg-primary-500 text-white py-3 rounded-md hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors font-medium flex items-center justify-center"
+                    className="flex-1 bg-success-500 text-white py-3 rounded-md hover:bg-success-600 focus:outline-none focus:ring-2 focus:ring-success-500 focus:ring-offset-2 transition-colors font-medium flex items-center justify-center"
                     disabled={createNoteMutation.isPending || updateNoteMutation.isPending}
                   >
                     <Plus className="w-4 h-4 mr-2" />

@@ -79,7 +79,7 @@ export default function LoginPage() {
           
           <Button 
             type="submit" 
-            className="w-full bg-primary-500 text-white py-3 rounded-md hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors font-medium"
+            className="w-full bg-success-500 text-white py-3 rounded-md hover:bg-success-600 focus:outline-none focus:ring-2 focus:ring-success-500 focus:ring-offset-2 transition-colors font-medium"
             disabled={loginMutation.isPending}
           >
             {loginMutation.isPending ? "Entrando..." : "Entrar"}
