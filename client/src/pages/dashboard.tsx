@@ -35,7 +35,7 @@ export default function DashboardPage() {
     defaultValues: {
       title: "",
       createdDate: new Date().toISOString().split('T')[0],
-      completedDate: "",
+      completedDate: new Date().toISOString().split('T')[0],
       status: "A Fazer",
     },
   });
@@ -71,7 +71,7 @@ export default function DashboardPage() {
       form.reset({
         title: "",
         createdDate: new Date().toISOString().split('T')[0],
-        completedDate: "",
+        completedDate: new Date().toISOString().split('T')[0],
         status: "A Fazer",
       });
       queryClient.invalidateQueries({ queryKey: ["/api/notes"] });
@@ -172,7 +172,7 @@ export default function DashboardPage() {
     form.reset({
       title: note.title,
       createdDate: note.createdDate,
-      completedDate: note.completedDate || "",
+      completedDate: note.completedDate || new Date().toISOString().split('T')[0],
       status: note.status,
     });
   };
@@ -182,7 +182,7 @@ export default function DashboardPage() {
     form.reset({
       title: "",
       createdDate: new Date().toISOString().split('T')[0],
-      completedDate: "",
+      completedDate: new Date().toISOString().split('T')[0],
       status: "A Fazer",
     });
   };
@@ -275,7 +275,7 @@ export default function DashboardPage() {
                 <div>
                   <FloatingLabelInput
                     id="note-completed-date"
-                    label="Data de Conclusão (opcional)"
+                    label="Data de Conclusão"
                     type="date"
                     {...form.register("completedDate")}
                   />

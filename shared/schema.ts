@@ -15,7 +15,7 @@ export const notes = pgTable("notes", {
   userId: integer("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
   title: text("title").notNull(),
   createdDate: date("created_date").notNull(),
-  completedDate: date("completed_date"),
+  completedDate: date("completed_date").notNull(),
   status: text("status").notNull().$type<"A Fazer" | "Concluída">(),
 });
 
@@ -45,7 +45,7 @@ export const insertNoteSchema = createInsertSchema(notes, {
   title: z.string().min(1, "Nome da tarefa é obrigatório"),
   status: z.enum(["A Fazer", "Concluída"]),
   createdDate: z.string(),
-  completedDate: z.string().optional(),
+  completedDate: z.string().min(1, "Data de conclusão é obrigatória"),
 }).omit({ id: true, userId: true });
 
 export type InsertUser = z.infer<typeof insertUserSchema>;
