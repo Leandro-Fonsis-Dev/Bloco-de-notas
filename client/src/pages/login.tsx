@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { useLocation } from "wouter";
-import { StickyNote } from "lucide-react";
+import { StickyNote, Eye, EyeOff } from "lucide-react";
 import { FloatingLabelInput } from "@/components/ui/floating-label-input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
@@ -13,6 +13,7 @@ import { loginSchema, type LoginUser } from "@shared/schema";
 export default function LoginPage() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
+  const [showPassword, setShowPassword] = useState(false);
   
   const form = useForm<LoginUser>({
     resolver: zodResolver(loginSchema),
@@ -67,12 +68,26 @@ export default function LoginPage() {
             <p className="text-sm text-red-600">{form.formState.errors.email.message}</p>
           )}
           
-          <FloatingLabelInput
-            id="login-password"
-            label="Senha"
-            type="password"
-            {...form.register("password")}
-          />
+          <div className="relative">
+            <FloatingLabelInput
+              id="login-password"
+              label="Senha"
+              type={showPassword ? "text" : "password"}
+              {...form.register("password")}
+            />
+            <button
+              type="button"
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+              onClick={() => setShowPassword(!showPassword)}
+              tabIndex={-1}
+            >
+              {showPassword ? (
+                <EyeOff className="w-5 h-5" />
+              ) : (
+                <Eye className="w-5 h-5" />
+              )}
+            </button>
+          </div>
           {form.formState.errors.password && (
             <p className="text-sm text-red-600">{form.formState.errors.password.message}</p>
           )}
