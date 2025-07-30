@@ -278,7 +278,7 @@ export default function DashboardPage() {
                     disabled={createNoteMutation.isPending || updateNoteMutation.isPending}
                   >
                     <Plus className="w-4 h-4 mr-2" />
-                    {editingNote ? "Atualizar" : "Criar Anotação"}
+                    Salvar
                   </Button>
                   {editingNote && (
                     <Button 
