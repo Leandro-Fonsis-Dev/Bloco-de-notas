@@ -343,9 +343,10 @@ export default function DashboardPage() {
                       onClick={() => setFilter("all")}
                       className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
                         filter === "all" 
-                          ? "bg-primary-500 text-white" 
+                          ? "text-white" 
                           : "border border-gray-300 text-gray-700 hover:bg-gray-50"
                       }`}
+                      style={filter === "all" ? { backgroundColor: '#28a745' } : {}}
                     >
                       Todas
                     </button>
@@ -353,9 +354,10 @@ export default function DashboardPage() {
                       onClick={() => setFilter("todo")}
                       className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
                         filter === "todo" 
-                          ? "bg-primary-500 text-white" 
+                          ? "text-white" 
                           : "border border-gray-300 text-gray-700 hover:bg-gray-50"
                       }`}
+                      style={filter === "todo" ? { backgroundColor: '#28a745' } : {}}
                     >
                       A Fazer
                     </button>
@@ -363,9 +365,10 @@ export default function DashboardPage() {
                       onClick={() => setFilter("completed")}
                       className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
                         filter === "completed" 
-                          ? "bg-primary-500 text-white" 
+                          ? "text-white" 
                           : "border border-gray-300 text-gray-700 hover:bg-gray-50"
                       }`}
+                      style={filter === "completed" ? { backgroundColor: '#28a745' } : {}}
                     >
                       Concluídas
                     </button>
