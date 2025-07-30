@@ -79,7 +79,10 @@ export default function LoginPage() {
           
           <Button 
             type="submit" 
-            className="w-full bg-success-500 text-white py-3 rounded-md hover:bg-success-600 focus:outline-none focus:ring-2 focus:ring-success-500 focus:ring-offset-2 transition-colors font-medium"
+            className="w-full text-white py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors font-medium"
+            style={{ backgroundColor: '#28a745' }}
+            onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = '#218838'}
+            onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = '#28a745'}
             disabled={loginMutation.isPending}
           >
             {loginMutation.isPending ? "Entrando..." : "Entrar"}
