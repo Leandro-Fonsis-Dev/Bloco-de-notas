@@ -13,7 +13,8 @@ import {
   CalendarCheck, 
   Edit, 
   Trash2,
-  PlusCircle 
+  PlusCircle,
+  CheckCircle
 } from "lucide-react";
 import { FloatingLabelInput } from "@/components/ui/floating-label-input";
 import { Button } from "@/components/ui/button";
@@ -126,6 +127,32 @@ export default function DashboardPage() {
     onError: (error: any) => {
       toast({
         title: "Erro ao excluir anotação",
+        description: error.message,
+        variant: "destructive",
+      });
+    },
+  });
+
+  // Mark as completed mutation
+  const markCompletedMutation = useMutation({
+    mutationFn: async (id: number) => {
+      const today = new Date().toISOString().split('T')[0];
+      const response = await apiRequest("PUT", `/api/notes/${id}`, {
+        status: "Concluída",
+        completedDate: today
+      });
+      return response.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/notes"] });
+      toast({
+        title: "Tarefa concluída!",
+        description: "A tarefa foi marcada como concluída.",
+      });
+    },
+    onError: (error: any) => {
+      toast({
+        title: "Erro ao marcar como concluída",
         description: error.message,
         variant: "destructive",
       });
@@ -391,6 +418,16 @@ export default function DashboardPage() {
                           </div>
                         </div>
                         <div className="flex items-center space-x-2 ml-4">
+                          {note.status === "A Fazer" && (
+                            <button 
+                              onClick={() => markCompletedMutation.mutate(note.id)}
+                              className="text-gray-400 hover:text-success-500 transition-colors"
+                              title="Marcar como Feita"
+                              disabled={markCompletedMutation.isPending}
+                            >
+                              <CheckCircle className="w-4 h-4" />
+                            </button>
+                          )}
                           <button 
                             onClick={() => handleEdit(note)}
                             className="text-gray-400 hover:text-primary-500 transition-colors"
